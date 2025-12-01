@@ -1,166 +1,89 @@
-// RELOAD TIMELINE
+// === ANIMASI MASUK SAAT RELOAD === //
+const fadeUp = (target, delay = 0) => {
+  gsap.fromTo(
+    target,
+    { opacity: 0, y: 100 },
+    {
+      opacity: 1,
+      y: 0,
+      ease: "power2.out",
+      duration: 0.6,
+      delay,
+    }
+  );
+};
 
-var tl = gsap.timeline();
+const fadeSide = (target, from = "left", delay = 0) => {
+  gsap.fromTo(
+    target,
+    { opacity: 0, x: from === "left" ? -100 : 100 },
+    {
+      opacity: 1,
+      x: 0,
+      ease: "power2.out",
+      duration: 1,
+      delay,
+    }
+  );
+};
 
-tl.fromTo(
-  ".aboutSection",
-  { opacity: 0, y: 100 },
-  {
-    opacity: 1,
-    y: 0,
-    ease: "power2.out",
-    duration: 0.6,
-  }
-);
+// Timeline reload (on load)
+fadeUp(".aboutSection");
+fadeUp(".nameSection", 0.2);
+fadeSide(".socialEmailLink", "left", 0.4);
+fadeSide(".socialLink", "right", 0.4);
 
-tl.fromTo(
-  ".nameSection",
-  { opacity: 0, y: 100 },
-  {
-    opacity: 1,
-    y: 0,
-    ease: "power2.out",
-    duration: 0.6,
-  }
-);
 
-tl.fromTo(
-  ".socialEmailLink",
-  { opacity: 0, x: -100 },
-  {
-    opacity: 1,
-    x: 0,
-    ease: "power2.out",
-    duration: 1,
-  }
-);
+// === SCROLL TRIGGER SECTION === //
+const scrollFadeUp = (trigger, targets, opts = {}) => {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger,
+      start: opts.start || "0% 84%",
+      end: opts.end || "10% 70%",
+      scrub: opts.scrub || false,
+      // markers: true, // aktifin buat debugging
+    },
+  });
 
-tl.fromTo(
-  ".socialLink",
-  { opacity: 0, x: 100 },
-  {
-    opacity: 1,
-    x: 0,
-    ease: "power2.out",
-    duration: 1,
-  }
-);
+  tl.fromTo(
+    targets,
+    { opacity: 0, y: 100 },
+    {
+      opacity: 1,
+      y: 0,
+      ease: "power2.out",
+      duration: opts.duration || 1,
+      stagger: opts.stagger || 0.2,
+    }
+  );
+};
 
-// TIMELINE 2
+// Skill section
+scrollFadeUp(".skillSection", ["#front", "#back", "#lang"]);
 
-var tl2 = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".skillSection",
-    start: "0% 84%",
-    end: "10% 70%",
-    // scrub: true,
-    // markers: true,
-  },
+// Experience section
+scrollFadeUp(".experience", [".companySection", ".experienceSection"], {
+  start: "10% 80%",
+  duration: 1.5,
 });
 
-tl2.fromTo(
-  "#front",
-  { opacity: 0, y: 100 },
-  {
-    opacity: 1,
-    y: 0,
-    ease: "power.out",
-    duration: 1,
-  }
-);
-
-tl2.fromTo(
-  "#back",
-  { opacity: 0, y: 100 },
-  {
-    opacity: 1,
-    y: 0,
-    ease: "power.out",
-    duration: 1,
-  }
-);
-
-tl2.fromTo(
-  "#lang",
-  { opacity: 0, y: 100 },
-  {
-    opacity: 1,
-    y: 0,
-    ease: "power.out",
-    duration: 1,
-  }
-);
-
-// TIMELINE 3
-
-var tl3 = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".experience",
-    start: "10% 80%",
-    end: "50% 70%",
-  },
+// Projects section
+scrollFadeUp(".projects", ".projects", {
+  start: "10% 80%",
+  duration: 2,
 });
 
-tl3.fromTo(
-  ".companySection",
-  { opacity: 0, x: -100 },
-  {
-    opacity: 1,
-    x: 0,
-    ease: "power.out",
-    duration: 1,
-  }
-);
-
-tl3.fromTo(
-  ".experienceSection",
-  { opacity: 0, y: 100 },
-  {
-    opacity: 1,
-    y: 0,
-    ease: "power.out",
-    duration: 2,
-  }
-);
-
-// TIMELINE 4
-
-var tl4 = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".projects",
-    start: "10% 80%",
-    end: "50% 70%",
-  },
+// Contact section
+scrollFadeUp(".contact", ".contact", {
+  start: "0% 80%",
+  duration: 1,
 });
 
-tl4.fromTo(
-  ".projects",
-  { opacity: 0, y: 100 },
-  {
-    opacity: 1,
-    y: 0,
-    ease: "power.out",
-    duration: 2,
-  }
-);
-
-// TIMELINE 5
-
-var tl5 = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".contact",
-    start: "0% 80%",
-    end: "50% 70%",
-  },
+scrollFadeUp(".experience", ".bento-item", {
+  start: "top 85%",
+  duration: 1.2,
+  stagger: 0.15,
 });
 
-tl5.fromTo(
-  ".contact",
-  { opacity: 0, y: 100 },
-  {
-    opacity: 1,
-    y: 0,
-    ease: "power.out",
-    duration: 1,
-  }
-);
+

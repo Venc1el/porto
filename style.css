@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 body {
   margin: 0;
@@ -144,7 +144,7 @@ html {
 }
 
 .skillHeader {
-  font-size: 44px;
+  font-size: 40px;
   color: #fff;
   padding-bottom: 20px;
   font-weight: 600;
@@ -153,98 +153,84 @@ html {
 
 .skillName {
   color: #cccccc;
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 600;
   letter-spacing: -1px;
 }
 
-/* EXPERIENCE SECTION */
-
+/* PROJECT EXPERIENCE SECTION */
 .experience {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.experienceSection {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: 68%;
-  gap: 10px;
-}
-
-.experienceItem {
-  background-color: #131315;
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  border-radius: 20px;
-  padding: 32px;
-  gap: 20px;
-}
-
-.experienceName {
+  background: #131315;
   color: #fff;
-  font-size: 32px;
-  font-weight: 600;
-}
-
-.experienceDesc {
-  color: #d9d9d9;
-  font-size: 24px;
-  font-weight: 600;
-}
-
-.companySection {
-  flex-grow: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-direction: column;
-  background-color: #131315;
-  color: #fff;
+  padding: 0;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
   border-radius: 20px;
-  font-weight: 600;
-  padding: 32px;
 }
 
-.experienceheading {
-  color: #226fff;
+.sectionTitle {
   font-size: 20px;
   font-weight: 600;
-  letter-spacing: 2px;
-  padding-bottom: 20px;
+  color: #226fff;
+  padding: 40px 30px 30px;
+  margin: 0;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.companyName {
-  font-size: 44px;
-  padding-bottom: 20px;
-  letter-spacing: -1.4px;
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 0; /* no whitespace at all */
 }
 
-.companySkills {
-  display: flex;
-  gap: 10px;
-  padding-top: 10px;
-  padding-bottom: 50%;
+.bento-item {
+  background: #131315;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 40px 32px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.companySkillName {
-  font-size: 18px;
-  text-align: center;
-  background-color: #226fff;
-  padding: 8px;
-  width: 80px;
-  border-radius: 10px;
+.bento-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(34, 111, 255, 0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
-.companyPeriod {
+.bento-item:hover::before {
+  opacity: 1;
+}
+
+.bento-item:hover {
+  transform: scale(1.02);
+  z-index: 2;
+}
+
+.bento-item h3 {
   font-size: 24px;
-  color: #8a8a93;
+  font-weight: 600;
+  margin-bottom: 8px;
 }
+
+.bento-item .company {
+  color: #9c9ca0;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.bento-item .desc {
+  color: #d3d3d3;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
 
 /* PROJECTS SECTION */
 
@@ -303,6 +289,24 @@ html {
   width: 100%;
   border-radius: 20px;
 }
+
+.archived {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  opacity: 0.55;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.disabledLink {
+  opacity: 0.25;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 
 /* SOCIALS SECTION */
 
@@ -623,44 +627,25 @@ html {
 
   /* EXPERIENCE SECTION */
 
-  .experience {
-    flex-direction: column;
+  .experience-title {
+    font-size: 28px;
   }
 
-  .experienceSection {
-    width: 100%;
-  }
-
-  .experienceName {
-    font-size: 24px;
-  }
-
-  .experienceDesc {
+  .experience-role {
     font-size: 20px;
   }
 
-  .companyName {
-    font-size: 28px;
-    padding-bottom: 16px;
-    letter-spacing: -1px;
-  }
-
-  .companySkillName {
-    font-size: 16px;
-    padding: 8px;
-    width: 68px;
-  }
-
-  .companyPeriod {
+  .experience-desc {
     font-size: 18px;
   }
 
-  .companySection {
-    padding: 28px;
+  .stack-item {
+    font-size: 14px;
+    padding: 6px 12px;
   }
 
-  .companySkills {
-    padding-bottom: 0%;
+  .experience-links a {
+    font-size: 16px;
   }
 
   /* SKILLS SECTION */
